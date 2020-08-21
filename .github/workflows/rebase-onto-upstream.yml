@@ -12,7 +12,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategies:
+    strategy:
       # do not fail everything if one jobs fails
       fail-fast: false
       continue-on-error: true
