@@ -11,11 +11,12 @@ jobs:
   rebase-fork-on-upstream-changes:
 
     runs-on: ubuntu-latest
+    # do not fail everything if one jobs fails
+    continue-on-error: true
 
     strategy:
       # do not fail everything if one jobs fails
       fail-fast: false
-      continue-on-error: true
       # use the matrix to run jobs for all packages
       matrix:
         package: [
