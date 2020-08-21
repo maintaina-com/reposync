@@ -18,7 +18,15 @@ Per forked Horde package, the following steps are executed in the workflow:
 - generate a new composer.json on that branch
 - rebase master branch on maintaina-composerfixed
 
-## Workflow Matrix
+## The Workflow's Package List
+
+Github Actions allow specifying a matrix for jobs, i.e. to run the same job
+for different software versions or on different operating systems. This can
+be used to emulate a loop over files etc.
+
+The workflow uses the matrix as a list of all packages/repositories that should
+be synced. This provides us with the nice advantage, that multiple jobs can run
+in parallel.
 
 ## How to add/remove packages from reposync
 
