@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  rebase-fork-on-upstream-changes:
+  reposync:
 
     runs-on: ubuntu-latest
     # do not fail everything if one jobs fails
