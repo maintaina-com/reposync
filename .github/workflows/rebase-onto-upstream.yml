@@ -20,6 +20,7 @@ jobs:
       # use the matrix to run jobs for all packages
       matrix:
         package: [
+          ActiveSync,
           Alarm,
         ]
 
