@@ -204,10 +204,16 @@ jobs:
           composer global config minimum-stability 'dev'
 
       - name: Install package for horde-components
-        run: composer global require horde/components
+        run: |
+          COMPOSER_AUTH='{"github-oauth": {"github.com": "${{ secrets.GITHUB_TOKEN }}"}}' composer global require horde/components
 
       - name: Configure horde-components
         run: echo "${{ secrets.HORDE_COMPONENTS_CONFIG }}" | base64 -d > ~/.composer/web/components/config/conf.php
+      
+      - name: Configure git user
+        run: |
+          git config --local user.name "maintaina-com-svc"
+          git config --local user.email "maintaina-com-svc@users.noreply.github.com"
 
       - name: Checkout horde-upstream
         uses: actions/checkout@v2
@@ -252,8 +258,6 @@ jobs:
           # regenerate composer.json
           ~/.composer/vendor/bin/horde-components composer
           # commit the newly generated composer.json
-          git config --local user.name "maintaina-com-svc"
-          git config --local user.email "maintaina-com-svc@users.noreply.github.com"
           git add composer.json
           git commit -m "Regenerate composer.json"
 
