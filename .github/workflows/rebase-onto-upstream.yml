@@ -209,11 +209,6 @@ jobs:
 
       - name: Configure horde-components
         run: echo "${{ secrets.HORDE_COMPONENTS_CONFIG }}" | base64 -d > ~/.composer/web/components/config/conf.php
-      
-      - name: Configure git user
-        run: |
-          git config --local user.name "maintaina-com-svc"
-          git config --local user.email "maintaina-com-svc@users.noreply.github.com"
 
       - name: Checkout horde-upstream
         uses: actions/checkout@v2
@@ -222,6 +217,11 @@ jobs:
           token: ${{ secrets.REPO_PAT }}
           fetch-depth: 0
           ref: horde-upstream
+
+      - name: Configure git user
+        run: |
+          git config --local user.name "maintaina-com-svc"
+          git config --local user.email "maintaina-com-svc@users.noreply.github.com"
 
       - name: Add and fetch upstream repository
         run: |
